@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import ApiService from "../service/ApiService";
 
 class ListCategoryComponent extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {
+         this.state = {
             categories: [],
             message: null
         }
@@ -30,7 +30,7 @@ class ListCategoryComponent extends Component {
         ApiService.deleteCategory(Id)
            .then(res => {
                this.setState({message : 'Category deleted successfully.'});
-               this.setState({categories: this.state.categories.filter(category => category.id !== Id)});
+               this.setState({categories: this.state.categories.filter(category => category.categoryId !== Id)});
            });
 
     }
@@ -50,10 +50,11 @@ class ListCategoryComponent extends Component {
             <div>
                 <h2 className="text-center">Category Details</h2>
                 <button className="btn btn-danger" onClick={() => this.addCategory()}> Add Category</button>
+                <h3>{this.state.message}</h3>
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>Category Name ::</th>
+                            <th>Category Name</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,8 +64,8 @@ class ListCategoryComponent extends Component {
                                     <tr key={category.categoryId}>
                                         <td>{category.name}</td>
                                         <td>
-                                            <button className="btn btn-success" onClick={() => this.deleteCategory(category.categoryId)}> Delete</button>
-                                            <button className="btn btn-success" onClick={() => this.editCategory(category.categoryId)}> Edit</button>
+                                            <button  style={style} className="btn btn-success" onClick={() => this.deleteCategory(category.categoryId)}> Delete</button>
+                                            <button  style={style} className="btn btn-success" onClick={() => this.editCategory(category.categoryId)}> Edit</button>
                                         </td>
                                     </tr>
                             )
@@ -77,5 +78,7 @@ class ListCategoryComponent extends Component {
     }
 
 }
-
+const style = {
+  margin: '10px'
+}
 export default ListCategoryComponent;

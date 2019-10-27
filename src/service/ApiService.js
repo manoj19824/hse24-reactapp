@@ -17,7 +17,7 @@ class ApiService {
     }
 
     addCategory(category) {
-        return axios.post(""+CATEGORY_API_BASE_URL, category);
+        return axios.post(CATEGORY_API_BASE_URL, category);
     }
 
     editCategory(category) {

@@ -23,7 +23,7 @@ class EditCategoryComponent extends Component {
                 let category = res.data;
                 this.setState({
                 id: category.categoryId,
-                categoryname: category.name,
+                name: category.name,
                });
             });
     }
@@ -36,7 +36,7 @@ class EditCategoryComponent extends Component {
         let category = {id: this.state.id, name: this.state.name};
         ApiService.editCategory(category)
             .then(res => {
-                this.setState({message : 'Category added successfully.'});
+                this.setState({message : 'Category edited successfully.'});
                 this.props.history.push('/categories');
             });
     }
@@ -45,14 +45,15 @@ class EditCategoryComponent extends Component {
         return (
             <div>
                 <h2 className="text-center">Edit Category</h2>
+                 <h3>{this.state.message}</h3>
                 <form>
 
                     <div className="form-group">
                         <label>Category Name:</label>
-                        <input type="text" placeholder="categoryname" name="categoryname" className="form-control" readonly="true" defaultValue={this.state.categoryname}/>
+                        <input type="text" placeholder="name" name="name" className="form-control" defaultValue={this.state.name}  onChange={this.onChange} />
                     </div>
                     <button className="btn btn-success" onClick={this.saveCategory}>Save</button>
-                </form>
+                </form> 
             </div>
         );
     }

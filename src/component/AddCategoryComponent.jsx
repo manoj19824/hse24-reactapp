@@ -17,6 +17,7 @@ class AddCategoryComponent extends Component{
         let category = {name: this.state.name};
         ApiService.addCategory(category)
             .then(res => {
+                console.log(res);
                 this.setState({message : 'Category added successfully.'});
                 this.props.history.push('/categories');
             });
@@ -32,7 +33,7 @@ class AddCategoryComponent extends Component{
                 <form>
                 <div className="form-group">
                     <label>Category Name:</label>
-                    <input type="text" placeholder="categoryname" name="categoryname" className="form-control" value={this.state.categoryname} onChange={this.onChange}/>
+                    <input type="text" placeholder="name" name="name" className="form-control" value={this.state.name} onChange={this.onChange}/>
                 </div>
                 <button className="btn btn-success" onClick={this.saveCategory}>Save</button>
             </form>

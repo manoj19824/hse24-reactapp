@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import ListCategoryComponent from "./component/ListCategoryComponent";
 import AddCategoryComponent from "./component/AddCategoryComponent";
 import EditCategoryComponent from "./component/EditCategoryComponent";
+import CategoryProductTreeviewComponent from "./component/CategoryProductTreeviewComponent";
 function App() {
   return (
     <div className="container">
@@ -16,6 +17,7 @@ function App() {
                 <Route path="/categories" component={ListCategoryComponent} />
                 <Route path="/add-category" component={AddCategoryComponent} />
                 <Route path="/edit-category" component={EditCategoryComponent} />
+                <Route path="/tree-view" component={CategoryProductTreeviewComponent} />
             </Switch>
         </div>
     </Router>
